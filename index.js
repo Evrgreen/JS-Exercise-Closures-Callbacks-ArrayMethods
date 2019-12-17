@@ -66,7 +66,8 @@ function processLength(list, callback) {
  * should return 'barbar'.
  */
 function processLastItem(stringList, callback) {
-  return callback(stringList[stringList.length - 1]);
+  const lastItem = stringList[stringList.length - 1];
+  return callback(lastItem);
 }
 
 /**
@@ -86,8 +87,12 @@ function processLastItem(stringList, callback) {
  * [2] Invoking `processSum` passing `[]` and `(num) => num + 1000`,
  * should return 1000.
  */
-function processSum(/* CODE HERE */) {
-  /* CODE HERE */
+function processSum(numberList, callback) {
+  const totalSum = numberList.reduce(
+    (sum, currentValue) => sum + currentValue,
+    0
+  );
+  return callback(totalSum);
 }
 
 /**
@@ -108,8 +113,9 @@ function processSum(/* CODE HERE */) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
  */
-function processProduct(/* CODE HERE */) {
-  /* CODE HERE */
+function processProduct(num1, num2, callback) {
+  const product = num1 * num2;
+  return callback(product);
 }
 
 /**
@@ -132,7 +138,9 @@ function processProduct(/* CODE HERE */) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
  */
-function processContains(/* CODE HERE */) {
+function processContains(item, list, callback) {
+  const itemIncluded = list.includes(item);
+  return callback(itemIncluded);
   /* CODE HERE */
 }
 
@@ -155,8 +163,11 @@ function processContains(/* CODE HERE */) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
  */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list, callback) {
+  const uniqueItems = list.filter(
+    (item, index) => list.indexOf(item) === index
+  );
+  return callback(uniqueItems);
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -177,8 +188,12 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
  */
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
+function getFullNames(listOfRunners) {
+  const runnersNames = [];
+  listOfRunners.forEach(runner =>
+    runnersNames.push(`${runner.last_name}, ${runner.first_name}`)
+  );
+  return runnersNames;
 }
 
 /**
@@ -193,8 +208,12 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
  */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+function firstNamesAllCaps(listOfRunners) {
+  const runnersFirstNames = [];
+  listOfRunners.forEach(runner =>
+    runnersFirstNames.push(`${runner.first_name.toUpperCase()}`)
+  );
+  return runnersFirstNames;
 }
 
 /**
@@ -210,8 +229,11 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
  */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+function getRunnersByTShirtSize(listOfRunner, tShirtSize) {
+  const tShirtSizeList = listOfRunner.filter(
+    element => element.shirt_size === tShirtSize
+  );
+  return tShirtSizeList;
 }
 
 /**
@@ -224,7 +246,8 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
  */
-function tallyUpDonations(/* CODE HERE */) {
+function tallyUpDonations(listOfRunners) {
+  return listOfRunners.reduce((sum, runner) => sum + runner.donation, 0);
   /* CODE HERE */
 }
 
