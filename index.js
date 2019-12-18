@@ -89,9 +89,7 @@ function processLastItem(stringList, callback) {
  */
 function processSum(numberList, callback) {
   const totalSum = numberList.reduce(
-    (sum, currentValue) => sum + currentValue,
-    0
-  );
+    (sum, currentValue) => sum + currentValue,0);
   return callback(totalSum);
 }
 
@@ -209,9 +207,8 @@ function getFullNames(listOfRunners) {
  * The first names appear in the array in the same order the runners appear in the `runners` array.
  */
 function firstNamesAllCaps(listOfRunners) {
-  const runnersFirstNames = [];
-  listOfRunners.forEach(runner =>
-    runnersFirstNames.push(`${runner.first_name.toUpperCase()}`)
+  const runnersFirstNames = listOfRunners.map(runners =>
+    runners.first_name.toUpperCase()
   );
   return runnersFirstNames;
 }
